@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+#from fastapi import FastAPI
+from flask import Flask
 import yfinance as yf
 import json
 
-app = FastAPI()
+app = Flask(__name__)
 
 @app.get("/")
 def home():
@@ -12,3 +13,7 @@ def home():
     ibovData = ibov.info
 
     return json.dumps(ibovData);
+
+if __name__ == "__main__":
+    app.run(debug=True);
+
